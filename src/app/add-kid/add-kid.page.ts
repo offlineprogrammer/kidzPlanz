@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {KidsService} from '../services/kids.service';
 
 @Component({
   selector: 'app-add-kid',
@@ -8,12 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class AddKidPage implements OnInit {
  
 
-  constructor() { }
+  constructor(
+    private kidsService: KidsService
+  ) { }
 
   ngOnInit() {
+   // this.kidsService.load();
   }
-  
 
-  
+  addKid(){
+    co
+    this.addKid(kidname);
+  }
+
+
 
 }
