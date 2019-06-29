@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-kid.page.scss'],
 })
 export class AddKidPage implements OnInit {
+ 
 
   constructor() { }
 
   ngOnInit() {
   }
+  
+
+  
 
 }
