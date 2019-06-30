@@ -1,7 +1,8 @@
 import {
   Component,
-  OnInit
+  OnInit,
 } from '@angular/core';
+import {  NavController } from '@ionic/angular';
 import {
   KidsService
 } from '../services/kids.service';
@@ -24,7 +25,8 @@ export class AddKidPage implements OnInit {
 
   constructor(
     private kidsService: KidsService,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private navCtrl: NavController,
   ) {
 
     this.addKidForm = formBuilder.group({
@@ -45,6 +47,7 @@ export class AddKidPage implements OnInit {
     console.log(this.addKidForm.value);
     console.log(this.addKidForm.controls.kidname.value);
     this.kidsService.createKid(this.addKidForm.controls.kidname.value);
+    this.navCtrl.navigateBack('/home');
        }
   }
 
