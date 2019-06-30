@@ -6,10 +6,16 @@
 
 <ion-content fullscreen>
 
+    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <form [formGroup]="addKidForm">
       <ion-item>
         <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="text" name="kidname"></ion-input>
+        <ion-input required type="text" formControlName="kidname" name="kidname" [class.invalid]="!addKidForm.controls.kidname.valid && (addKidForm.controls.kidname.dirty || submitAttempt)" ></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="!addKidForm.controls.kidname.valid  && (addKidForm.controls.kidname.dirty || submitAttempt)">
+          <p>Please enter a valid name.</p>
       </ion-item>
 
       <ion-item>
@@ -17,7 +23,7 @@
         <ion-input required type="text" oninput="handleLastNameValue(event)"></ion-input>
       </ion-item>
 
-      
+      </form>
 
 
     </ion-list>
