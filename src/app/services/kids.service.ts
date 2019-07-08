@@ -45,7 +45,9 @@ export class KidsService {
 
   }
 
-  
+  getKid(id: string): Kid {
+    return this.kids.find(kid => kid.id === id);
+  }
 
   async save(): Promise<void> {
    
