@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import {
   KidsService
 } from '../services/kids.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-kid-info',
@@ -13,7 +14,7 @@ import {
 export class KidInfoPage implements OnInit {
   private kid: Kid;
 
-  constructor(  private route: ActivatedRoute,private kidsService: KidsService,) {
+  constructor(  private route: ActivatedRoute,private kidsService: KidsService, private navCtrl: NavController,) {
     this.kid = {
       id: '',
       name: '',
@@ -31,6 +32,12 @@ export class KidInfoPage implements OnInit {
         this.kid = this.kidsService.getKid(kidId);
       });
     }
+  }
+
+
+  deleteKid() {
+    this.kidsService.deleteKid(this.kid);
+    this.navCtrl.navigateBack("/home");
   }
 
 }
