@@ -3,15 +3,32 @@ import { Plugins } from '@capacitor/core';
 import {Kid} from '../interfaces/kid';
 
 
-
+const { Storage } = Plugins;
 @Injectable({
   providedIn: 'root'
 })
 export class KidsService {
 
+
+
   public kids: Kid[] = [];
+  public loaded: boolean = false;
 
   constructor() { }
+
+  async load() {
+    const ret = await Storage.get({ key: 'kids' });
+    if (ret.value != null) {
+      console.log(ret.value);
+      this.kids = JSON.parse(ret.value);
+      console.log(this.kids);
+      
+    }
+    this.loaded = true;
+  }
+  
+
+  
 
   createKid(name): void {
 
@@ -28,8 +45,10 @@ export class KidsService {
 
   }
 
+  
+
   async save(): Promise<void> {
-    const { Storage } = Plugins;
+   
     await Storage.set({
       key: 'kids',
       value: JSON.stringify(this.kids)

@@ -8,8 +8,11 @@
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-list>
+      <ion-item button detail *ngFor="let kid of kidsService.kids" [href]="'/planz/' + kid.id" routerDirection="forward">
+        <ion-label>{{ kid.name}}</ion-label>
+      </ion-item>
+    </ion-list>
     <ion-fab vertical="center" horizontal="end" slot="fixed">
       <ion-fab-button>
         <ion-icon name="add" [routerLink]="['/add-kid']"></ion-icon>
