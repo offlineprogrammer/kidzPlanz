@@ -9,7 +9,7 @@
 <ion-content>
   <div class="ion-padding">
     <ion-list>
-      <ion-item button detail *ngFor="let kid of kidsService.kids" [href]="'/planz/' + kid.id" routerDirection="forward">
+      <ion-item button detail *ngFor="let kid of kidsService.kids" [href]="'/kid-info/' + kid.id" routerDirection="forward">
         <ion-label>{{ kid.name}}</ion-label>
       </ion-item>
     </ion-list>
