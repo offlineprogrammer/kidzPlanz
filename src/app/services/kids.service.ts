@@ -38,7 +38,7 @@ export class KidsService {
     this.kids.push({
       id: id.toString(),
       name,
-      photo: ''
+      photo:  'assets/monsters/' + Math.floor(Math.random()*(11-1+1)+1) +'.png',
     });
 
     this.save();
