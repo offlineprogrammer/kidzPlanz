@@ -22,13 +22,13 @@ export class KidsService {
       console.log(ret.value);
       this.kids = JSON.parse(ret.value);
       console.log(this.kids);
-      
+
     }
     this.loaded = true;
   }
-  
 
-  
+
+
 
   createKid(name): void {
 
@@ -50,7 +50,7 @@ export class KidsService {
   }
 
   async save(): Promise<void> {
-   
+
     await Storage.set({
       key: 'kids',
       value: JSON.stringify(this.kids)
