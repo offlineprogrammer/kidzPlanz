@@ -7,6 +7,9 @@ import {
 import {
   Kid
 } from '../interfaces/kid';
+import {
+  Plan
+} from '../interfaces/plan';
 
 
 const {
@@ -21,6 +24,7 @@ export class KidsService {
 
   public kids: Kid[] = [];
   public loaded: boolean = false;
+  public planz: Plan[] = [];
 
   constructor() {}
 
@@ -38,6 +42,23 @@ export class KidsService {
   }
 
 
+  createPlan(name, kidId): void {
+
+    let oKid = this.kids.filter(kid => kid.id === kidId)[0];
+    this.planz = oKid.planz;
+    let id = Math.max(...this.planz.map(plan => parseInt(plan.id)), 0) + 1;
+
+    this.planz.push({
+      id: id.toString(),
+      name: name
+      
+    });
+
+    this.save();
+    
+
+   
+  }
 
 
   createKid(name): void {
@@ -49,6 +70,7 @@ export class KidsService {
       id: id.toString(),
       name,
       photo: 'assets/monsters/' + Math.floor(Math.random() * (11 - 1 + 1) + 1) + '.png',
+      planz: []
     });
 
     this.save();

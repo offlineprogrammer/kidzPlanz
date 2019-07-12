@@ -11,6 +11,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-plan',
@@ -24,6 +25,7 @@ export class NewPlanPage implements OnInit {
   public newPlanForm: FormGroup;
 
   constructor(
+    private route: ActivatedRoute,
     private kidsService: KidsService,
     public formBuilder: FormBuilder,
     private navCtrl: NavController,
@@ -47,7 +49,7 @@ export class NewPlanPage implements OnInit {
     console.log('success!')
     console.log(this.newPlanForm.value);
     console.log(this.newPlanForm.controls.planname.value);
-    this.kidsService.createKid(this.newPlanForm.controls.planname.value);
+    this.kidsService.createPlan(this.newPlanForm.controls.planname.value,this.kidId);
     this.navCtrl.navigateBack('/home');
        }
   }
