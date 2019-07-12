@@ -29,7 +29,7 @@ export class NewPlanPage implements OnInit {
   ) {
 
     this.newPlanForm = formBuilder.group({
-      kidname: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
+      planname: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
 
     });
 
@@ -37,6 +37,17 @@ export class NewPlanPage implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  addPlan() {
+    this.submitAttempt = true;
+    if (this.newPlanForm.valid){
+    console.log('success!')
+    console.log(this.newPlanForm.value);
+    console.log(this.newPlanForm.controls.planname.value);
+    this.kidsService.createKid(this.newPlanForm.controls.planname.value);
+    this.navCtrl.navigateBack('/home');
+       }
   }
 
 }

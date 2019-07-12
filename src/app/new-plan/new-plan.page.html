@@ -11,10 +11,10 @@
       <form [formGroup]="newPlanForm">
     <ion-item>
       <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text" formControlName="kidname" name="kidname" [class.invalid]="!newPlanForm.controls.kidname.valid && (newPlanForm.controls.kidname.dirty || submitAttempt)" ></ion-input>
+      <ion-input required type="text" formControlName="planname" name="kiplannamedname" [class.invalid]="!newPlanForm.controls.planname.valid && (newPlanForm.controls.planname.dirty || submitAttempt)" ></ion-input>
     </ion-item>
 
-    <ion-item *ngIf="!newPlanForm.controls.kidname.valid  && (newPlanForm.controls.kidname.dirty || submitAttempt)">
+    <ion-item *ngIf="!newPlanForm.controls.planname.valid  && (newPlanForm.controls.planname.dirty || submitAttempt)">
         <p>Please enter a valid name.</p>
     </ion-item>
 
@@ -26,7 +26,7 @@
   </ion-list>
 
   <div class="ion-padding">
-    <ion-button expand="block" (click)="addKid()" class="ion-no-margin">Add Kid</ion-button>
+    <ion-button expand="block" (click)="addPlan()" class="ion-no-margin">Add Plan</ion-button>
   </div>
 
 </ion-content>
