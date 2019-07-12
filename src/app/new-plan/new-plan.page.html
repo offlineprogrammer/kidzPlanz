@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Plan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+    
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <form [formGroup]="newPlanForm">
+    <ion-item>
+      <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required type="text" formControlName="kidname" name="kidname" [class.invalid]="!newPlanForm.controls.kidname.valid && (newPlanForm.controls.kidname.dirty || submitAttempt)" ></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="!newPlanForm.controls.kidname.valid  && (newPlanForm.controls.kidname.dirty || submitAttempt)">
+        <p>Please enter a valid name.</p>
+    </ion-item>
+
+    
+
+    </form>
+
+
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button expand="block" (click)="addKid()" class="ion-no-margin">Add Kid</ion-button>
+  </div>
+
+</ion-content>
