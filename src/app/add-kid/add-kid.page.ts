@@ -1,16 +1,7 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
-import {  NavController } from '@ionic/angular';
-import {
-  KidsService
-} from '../services/kids.service';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { KidsService } from '../services/kids.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({

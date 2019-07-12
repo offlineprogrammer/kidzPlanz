@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  KidsService
-} from '../services/kids.service';
+import { KidsService } from '../services/kids.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',

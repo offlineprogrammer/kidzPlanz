@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Kid} from '../interfaces/kid';
 import { ActivatedRoute } from '@angular/router';
-import {
-  KidsService
-} from '../services/kids.service';
+import { KidsService } from '../services/kids.service';
 import { NavController } from '@ionic/angular';
 
 @Component({

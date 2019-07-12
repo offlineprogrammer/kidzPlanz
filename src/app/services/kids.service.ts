@@ -1,20 +1,10 @@
-import {
-  Injectable
-} from '@angular/core';
-import {
-  Plugins
-} from '@capacitor/core';
-import {
-  Kid
-} from '../interfaces/kid';
-import {
-  Plan
-} from '../interfaces/plan';
+import { Injectable } from '@angular/core';
+import { Plugins } from '@capacitor/core';
+import { Kid } from '../interfaces/kid';
+import { Plan } from '../interfaces/plan';
 
 
-const {
-  Storage
-} = Plugins;
+const { Storage } = Plugins;
 @Injectable({
   providedIn: 'root'
 })
