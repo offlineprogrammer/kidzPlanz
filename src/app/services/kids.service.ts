@@ -1,9 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Plugins } from '@capacitor/core';
-import {Kid} from '../interfaces/kid';
+import {
+  Injectable
+} from '@angular/core';
+import {
+  Plugins
+} from '@capacitor/core';
+import {
+  Kid
+} from '../interfaces/kid';
 
 
-const { Storage } = Plugins;
+const {
+  Storage
+} = Plugins;
 @Injectable({
   providedIn: 'root'
 })
@@ -14,10 +22,12 @@ export class KidsService {
   public kids: Kid[] = [];
   public loaded: boolean = false;
 
-  constructor() { }
+  constructor() {}
 
   async load() {
-    const ret = await Storage.get({ key: 'kids' });
+    const ret = await Storage.get({
+      key: 'kids'
+    });
     if (ret.value != null) {
       console.log(ret.value);
       this.kids = JSON.parse(ret.value);
@@ -38,7 +48,7 @@ export class KidsService {
     this.kids.push({
       id: id.toString(),
       name,
-      photo:  'assets/monsters/' + Math.floor(Math.random()*(11-1+1)+1) +'.png',
+      photo: 'assets/monsters/' + Math.floor(Math.random() * (11 - 1 + 1) + 1) + '.png',
     });
 
     this.save();
@@ -49,7 +59,7 @@ export class KidsService {
     return this.kids.find(kid => kid.id === id);
   }
 
-  async save(): Promise<void> {
+  async save(): Promise < void > {
 
     await Storage.set({
       key: 'kids',

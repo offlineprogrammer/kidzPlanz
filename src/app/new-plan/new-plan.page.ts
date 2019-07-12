@@ -18,6 +18,7 @@ import {
   styleUrls: ['./new-plan.page.scss'],
 })
 export class NewPlanPage implements OnInit {
+  private kidId: string;
 
   public submitAttempt = false;
   public newPlanForm: FormGroup;
@@ -37,6 +38,7 @@ export class NewPlanPage implements OnInit {
 
 
   ngOnInit() {
+    this.kidId = this.route.snapshot.paramMap.get('id');
   }
 
   addPlan() {
