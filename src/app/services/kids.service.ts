@@ -4,7 +4,9 @@ import { Kid } from '../interfaces/kid';
 import { Plan } from '../interfaces/plan';
 
 
-const { Storage } = Plugins;
+const {
+  Storage
+} = Plugins;
 @Injectable({
   providedIn: 'root'
 })
@@ -24,8 +26,10 @@ export class KidsService {
     });
     if (ret.value != null) {
       console.log(ret.value);
-      this.kids = JSON.parse(ret.value);
-      console.log(this.kids);
+      if (ret.value) {
+        this.kids = JSON.parse(ret.value);
+        console.log(this.kids);
+      }
 
     }
     this.loaded = true;
@@ -41,13 +45,13 @@ export class KidsService {
     this.planz.push({
       id: id.toString(),
       name: name
-      
+
     });
 
     this.save();
-    
 
-   
+
+
   }
 
 

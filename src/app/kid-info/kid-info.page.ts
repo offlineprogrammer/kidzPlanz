@@ -17,6 +17,7 @@ export class KidInfoPage implements OnInit {
       id: '',
       name: '',
       photo: '',
+      planz: []
 
     };
    }
