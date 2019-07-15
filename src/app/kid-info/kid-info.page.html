@@ -24,4 +24,12 @@
     <ion-icon name="add" [routerLink]="['/new-plan/' + kid.id]"></ion-icon>
   </ion-fab-button>
 </ion-fab>
+
+<ion-list>
+  <ion-item button detail *ngFor="let plan of kid.planz" [href]="'/taskz/' + kid.id+'/'+plan.id" routerDirection="forward">
+    <ion-label>{{ plan.name}}</ion-label>
+    <!-- <ion-badge color="secondary">{{plan.planTaskz.length}}  </ion-badge> -->
+  </ion-item>
+</ion-list>
+
 </ion-content>
