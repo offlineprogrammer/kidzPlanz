@@ -36,7 +36,7 @@ export class KidsService {
   }
 
 
-  createPlan(name, kidId): void {
+  createPlan(name, date, kidId): void {
 
     let oKid = this.kids.filter(kid => kid.id === kidId)[0];
     this.planz = oKid.planz;
@@ -44,7 +44,8 @@ export class KidsService {
 
     this.planz.push({
       id: id.toString(),
-      name: name
+      name: name,
+      date:date
 
     });
 

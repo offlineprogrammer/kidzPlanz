@@ -23,7 +23,8 @@ export class NewPlanPage implements OnInit {
   ) {
 
     this.newPlanForm = formBuilder.group({
-      planname: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
+      planname: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      plandate:[]
 
     });
 
@@ -39,8 +40,8 @@ export class NewPlanPage implements OnInit {
     if (this.newPlanForm.valid){
     console.log('success!')
     console.log(this.newPlanForm.value);
-    console.log(this.newPlanForm.controls.planname.value);
-    this.kidsService.createPlan(this.newPlanForm.controls.planname.value,this.kidId);
+    console.log(this.newPlanForm.controls.plandate.value);
+    this.kidsService.createPlan(this.newPlanForm.controls.planname.value,this.newPlanForm.controls.plandate.value,this.kidId);
     this.navCtrl.navigateBack('/home');
        }
   }
