@@ -15,7 +15,7 @@ export class KidsService {
 
 
   public kids: Kid[] = [];
-  public loaded: boolean = false;
+  public loaded = false;
   public planz: Plan[] = [];
 
   constructor() {}
@@ -38,14 +38,14 @@ export class KidsService {
 
   createPlan(name, date, kidId): void {
 
-    let oKid = this.kids.filter(kid => kid.id === kidId)[0];
+    const oKid = this.kids.filter(kid => kid.id === kidId)[0];
     this.planz = oKid.planz;
-    let id = Math.max(...this.planz.map(plan => parseInt(plan.id)), 0) + 1;
+    const id = Math.max(...this.planz.map(plan => parseInt(plan.id)), 0) + 1;
 
     this.planz.push({
       id: id.toString(),
-      name: name,
-      date:date
+      name,
+      date
 
     });
 
@@ -59,7 +59,7 @@ export class KidsService {
   createKid(name): void {
 
     // Create a unique id that is one larger than the current largest id
-    let id = Math.max(...this.kids.map(kid => parseInt(kid.id)), 0) + 1;
+    const id = Math.max(...this.kids.map(kid => parseInt(kid.id)), 0) + 1;
 
     this.kids.push({
       id: id.toString(),
@@ -87,7 +87,7 @@ export class KidsService {
 
   deleteKid(kid: Kid): void {
     // Get the index in the array of the note that was passed in
-    let index = this.kids.indexOf(kid);
+    const index = this.kids.indexOf(kid);
 
     // Delete that element of the array and resave the data
     if (index > -1) {

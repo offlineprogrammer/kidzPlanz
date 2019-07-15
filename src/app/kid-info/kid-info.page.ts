@@ -12,7 +12,7 @@ import { NavController } from '@ionic/angular';
 export class KidInfoPage implements OnInit {
   private kid: Kid;
 
-  constructor(  private route: ActivatedRoute,private kidsService: KidsService, private navCtrl: NavController,) {
+  constructor(  private route: ActivatedRoute, private kidsService: KidsService, private navCtrl: NavController, ) {
     this.kid = {
       id: '',
       name: '',
@@ -23,7 +23,7 @@ export class KidInfoPage implements OnInit {
    }
 
   ngOnInit() {
-    let kidId = this.route.snapshot.paramMap.get('id');
+    const kidId = this.route.snapshot.paramMap.get('id');
     if (this.kidsService.loaded) {
       this.kid = this.kidsService.getKid(kidId);
     } else {
@@ -36,7 +36,7 @@ export class KidInfoPage implements OnInit {
 
   deleteKid() {
     this.kidsService.deleteKid(this.kid);
-    this.navCtrl.navigateBack("/home");
+    this.navCtrl.navigateBack('/home');
   }
 
 }
