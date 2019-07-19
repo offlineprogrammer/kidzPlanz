@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'add-kid', loadChildren: './add-kid/add-kid.module#AddKidPageModule' },
   { path: 'kid-info/:id', loadChildren: './kid-info/kid-info.module#KidInfoPageModule' },
   { path: 'new-plan/:id', loadChildren: './new-plan/new-plan.module#NewPlanPageModule' },
+  { path: 'plan-info', loadChildren: './plan-info/plan-info.module#PlanInfoPageModule' },
 ];
 
 @NgModule({
