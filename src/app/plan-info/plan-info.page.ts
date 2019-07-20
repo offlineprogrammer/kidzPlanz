@@ -37,6 +37,11 @@ export class PlanInfoPage implements OnInit {
     }
   }
 
+  deletePlan() {
+    this.kidsService.deletePlan(this.kid_Id, this.plan);
+    this.goBack();
+  }
+
   goBack() {
     this.navCtrl.navigateBack('kid-info/'+this.kid_Id);
   }

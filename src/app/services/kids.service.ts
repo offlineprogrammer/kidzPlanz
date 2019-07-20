@@ -91,6 +91,24 @@ export class KidsService {
 
   }
 
+  deletePlan(kid_id: string, plan: Plan): void {
+    // Get the index in the array of the note that was passed in
+
+    const index = this.kids
+    .find(kid => kid.id === kid_id)
+    .planz.indexOf(plan);
+
+   
+
+    // Delete that element of the array and resave the data
+    if (index > -1) {
+       this.kids
+      .find(kid => kid.id === kid_id)
+      .planz.splice(index, 1);
+       this.save();
+    }
+  }
+
   deleteKid(kid: Kid): void {
     // Get the index in the array of the note that was passed in
     const index = this.kids.indexOf(kid);
