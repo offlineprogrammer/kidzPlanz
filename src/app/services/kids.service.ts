@@ -72,6 +72,12 @@ export class KidsService {
 
   }
 
+  getPlan(kid_id: string, plan_Id): Plan {
+    return this.kids
+      .find(kid => kid.id === kid_id)
+      .planz.find(plan => plan.id === plan_Id);
+  }
+
   getKid(id: string): Kid {
     return this.kids.find(kid => kid.id === id);
   }

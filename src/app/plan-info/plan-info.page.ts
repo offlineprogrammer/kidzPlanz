@@ -20,13 +20,21 @@ export class PlanInfoPage implements OnInit {
   constructor( private route: ActivatedRoute, private kidsService: KidsService, private navCtrl: NavController) {
     this.plan = {
       id: '',
-      name: ''
+      name: '',
+      date:  Date.now()
     };
    }
 
   ngOnInit() {
     this.kid_Id = this.route.snapshot.paramMap.get("kid_id");
     this.plan_Id = this.route.snapshot.paramMap.get("plan_id");
+    if (this.kidsService.loaded) {
+      this.plan = this.kidsService.getPlan(this.kid_Id,this.plan_Id);
+    } else {
+      this.kidsService.load().then(() => {
+        this.plan = this.kidsService.getPlan(this.kid_Id,this.plan_Id);
+      });
+    }
   }
 
   goBack() {
