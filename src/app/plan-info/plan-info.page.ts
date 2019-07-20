@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Plan} from '../interfaces/plan';
 import { ActivatedRoute } from '@angular/router';
 import { KidsService } from '../services/kids.service';
-import { NavController } from '@ionic/angular';
+import { NavController,AlertController  } from '@ionic/angular';
 
 
 
@@ -17,7 +17,7 @@ export class PlanInfoPage implements OnInit {
   private kid_Id: string;
   private plan_Id: string;
 
-  constructor( private route: ActivatedRoute, private kidsService: KidsService, private navCtrl: NavController) {
+  constructor( private route: ActivatedRoute, private kidsService: KidsService, private navCtrl: NavController,private  alertController: AlertController) {
     this.plan = {
       id: '',
       name: '',
@@ -46,5 +46,39 @@ export class PlanInfoPage implements OnInit {
   goBack() {
     this.navCtrl.navigateBack('kid-info/'+this.kid_Id);
   }
+
+ 
+
+
+  async addTask() {
+    const alert = await this.alertController.create({
+      header: 'New Task!',
+      inputs: [
+        {
+          name: 'Task Name',
+          type: 'text',
+          placeholder: 'Placeholder 1'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
 
 }
