@@ -21,7 +21,7 @@ export class PlanInfoPage implements OnInit {
     this.plan = {
       id: '',
       name: '',
-      date:  Date.now()
+      date: null
     };
    }
 
