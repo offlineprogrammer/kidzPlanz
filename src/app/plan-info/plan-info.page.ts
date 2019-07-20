@@ -21,7 +21,8 @@ export class PlanInfoPage implements OnInit {
     this.plan = {
       id: '',
       name: '',
-      date: null
+      date: null,
+      taskz:[]
     };
    }
 
