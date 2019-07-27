@@ -22,6 +22,7 @@ export class PlanInfoPage implements OnInit {
       id: '',
       name: '',
       date: null,
+      photo: null,
       taskz:[]
     };
    }

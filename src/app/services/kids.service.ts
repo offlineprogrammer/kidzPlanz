@@ -45,6 +45,7 @@ export class KidsService {
     this.planz.push({
       id: id.toString(),
       name,
+      photo: 'assets/emotions/neutral.png',
       date,
       taskz:[]
 
