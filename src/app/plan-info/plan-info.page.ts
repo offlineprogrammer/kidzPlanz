@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { KidsService } from '../services/kids.service';
 import { NavController,AlertController,ModalController  } from '@ionic/angular';
 import { SetMoodPage } from '../set-mood/set-mood.page';
+import { OverlayEventDetail } from '@ionic/core';
 
 
 
@@ -49,6 +50,11 @@ export class PlanInfoPage implements OnInit {
     const modal = await this.modalController.create({
       component: SetMoodPage
     });
+    modal.onDidDismiss().then((detail: OverlayEventDetail) => {
+      if (detail !== null) {
+        console.log('The result:', detail.data);
+      }
+   });
     return await modal.present();
   }
 

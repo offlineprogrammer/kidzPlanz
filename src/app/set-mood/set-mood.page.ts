@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {ModalController, NavParams} from '@ionic/angular';
 
 @Component({
   selector: 'app-set-mood',
@@ -7,9 +8,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SetMoodPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController,
+    private navParams: NavParams) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    
+  }
+
+  async dismissModal() {
+    const result: Date = new Date();
+    
+    await this.modalController.dismiss(result);
   }
 
 }
