@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Plan} from '../interfaces/plan';
 import { ActivatedRoute } from '@angular/router';
 import { KidsService } from '../services/kids.service';
-import { NavController,AlertController  } from '@ionic/angular';
+import { NavController,AlertController,ModalController  } from '@ionic/angular';
+import { SetMoodPage } from '../set-mood/set-mood.page';
 
 
 
@@ -17,7 +18,12 @@ export class PlanInfoPage implements OnInit {
   private kid_Id: string;
   private plan_Id: string;
 
-  constructor( private route: ActivatedRoute, private kidsService: KidsService, private navCtrl: NavController,private  alertController: AlertController) {
+  constructor(
+    private route: ActivatedRoute,
+    private kidsService: KidsService,
+    private navCtrl: NavController,
+    private  alertController: AlertController,
+    private modalController: ModalController) {
     this.plan = {
       id: '',
       name: '',
@@ -39,6 +45,13 @@ export class PlanInfoPage implements OnInit {
     }
   }
 
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: SetMoodPage
+    });
+    return await modal.present();
+  }
+
   deletePlan() {
     this.kidsService.deletePlan(this.kid_Id, this.plan);
     this.goBack();
@@ -48,7 +61,7 @@ export class PlanInfoPage implements OnInit {
     this.navCtrl.navigateBack('kid-info/'+this.kid_Id);
   }
 
- 
+
 
 
   async addTask() {

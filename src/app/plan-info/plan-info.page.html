@@ -14,7 +14,7 @@
 
 <ion-content>
   <ion-card >
-    <ion-img [src]='plan.photo' ></ion-img>
+    <ion-img [src]='plan.photo' (click)="presentModal()" ></ion-img>
     <ion-card-header>
         <ion-card-title text-center>{{ plan.name }}</ion-card-title>
     </ion-card-header>
