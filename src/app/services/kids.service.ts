@@ -57,6 +57,17 @@ export class KidsService {
 
   }
 
+  getMoods(): string[] {
+    const planMoods: any =
+      ['assets/emotions/angry.png',
+        'assets/emotions/crazy.png',
+        'assets/emotions/crying.png',
+        'assets/emotions/happy.png',
+        'assets/emotions/neutral.png',
+        'assets/emotions/sad.png'
+      ];
+    return planMoods;
+  }
 
   createKid(name): void {
 

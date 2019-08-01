@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController, NavParams} from '@ionic/angular';
+import { KidsService } from '../services/kids.service';
 
 @Component({
   selector: 'app-set-mood',
@@ -8,10 +9,19 @@ import {ModalController, NavParams} from '@ionic/angular';
 })
 export class SetMoodPage implements OnInit {
 
-  constructor(private modalController: ModalController,
+  private planMoods: string[];
+
+  constructor(private modalController: ModalController,private kidsService: KidsService,
     private navParams: NavParams) { }
 
   ngOnInit() {
+    if (this.kidsService.loaded) {
+      this.planMoods = this.kidsService.getMoods();
+    } else {
+      this.kidsService.load().then(() => {
+        this.planMoods = this.kidsService.getMoods();
+      });
+    }
   }
 
   ionViewWillEnter() {
