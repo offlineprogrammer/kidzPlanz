@@ -28,6 +28,13 @@ export class SetMoodPage implements OnInit {
     
   }
 
+  async deletePlan(planMood) {
+
+    
+    await this.modalController.dismiss(planMood);
+  }
+
+
   async dismissModal() {
     const result: Date = new Date();
     

@@ -13,7 +13,7 @@
     <ion-row responsive-sm wrap >
       <ion-col *ngFor="let planMood of planMoods" size="6">
           <div>
-              <ion-img [src]='planMood'></ion-img>
+              <ion-img [src]='planMood' (click)="deletePlan(planMood)"></ion-img>
           </div>
       </ion-col>
       
