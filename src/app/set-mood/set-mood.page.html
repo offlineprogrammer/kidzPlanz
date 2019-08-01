@@ -9,28 +9,18 @@
 
 <ion-content>
 
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <div><img decoding="async" src="assets/emotions/neutral.png"></div>
-              </ion-col>
-              <ion-col>
-                  <div><img decoding="async" src="assets/emotions/happy.png"></div>
-              </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <div><img decoding="async" src="assets/emotions/sad.png"></div>
-              </ion-col>
-              <ion-col>
-                  <div><img decoding="async" src="assets/emotions/crying.png"></div>
-              </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <div><img decoding="async" src="assets/emotions/angry.png"></div>
-              </ion-col>
-        </ion-row>
-      </ion-grid>
+  <ion-grid>
+    <ion-row responsive-sm wrap >
+      <ion-col *ngFor="let planMood of planMoods" size="6">
+          <div>
+              <ion-img [src]='planMood'></ion-img>
+          </div>
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+
+  
+
 
 </ion-content>
