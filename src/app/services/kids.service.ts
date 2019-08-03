@@ -1,7 +1,15 @@
-import { Injectable } from '@angular/core';
-import { Plugins } from '@capacitor/core';
-import { Kid } from '../interfaces/kid';
-import { Plan } from '../interfaces/plan';
+import {
+  Injectable
+} from '@angular/core';
+import {
+  Plugins
+} from '@capacitor/core';
+import {
+  Kid
+} from '../interfaces/kid';
+import {
+  Plan
+} from '../interfaces/plan';
 
 
 const {
@@ -47,7 +55,7 @@ export class KidsService {
       name,
       photo: 'assets/emotions/neutral.png',
       date,
-      taskz:[]
+      taskz: []
 
     });
 
@@ -58,14 +66,13 @@ export class KidsService {
   }
 
   getMoods(): string[] {
-    const planMoods: any =
-      ['assets/emotions/angry.png',
-        'assets/emotions/crazy.png',
-        'assets/emotions/crying.png',
-        'assets/emotions/happy.png',
-        'assets/emotions/neutral.png',
-        'assets/emotions/sad.png'
-      ];
+    const planMoods: any = ['assets/emotions/angry.png',
+      'assets/emotions/crazy.png',
+      'assets/emotions/crying.png',
+      'assets/emotions/happy.png',
+      'assets/emotions/neutral.png',
+      'assets/emotions/sad.png'
+    ];
     return planMoods;
   }
 
@@ -108,17 +115,17 @@ export class KidsService {
     // Get the index in the array of the note that was passed in
 
     const index = this.kids
-    .find(kid => kid.id === kid_id)
-    .planz.indexOf(plan);
+      .find(kid => kid.id === kid_id)
+      .planz.indexOf(plan);
 
-   
+
 
     // Delete that element of the array and resave the data
     if (index > -1) {
-       this.kids
-      .find(kid => kid.id === kid_id)
-      .planz.splice(index, 1);
-       this.save();
+      this.kids
+        .find(kid => kid.id === kid_id)
+        .planz.splice(index, 1);
+      this.save();
     }
   }
 
@@ -134,14 +141,14 @@ export class KidsService {
 
   createTask(kid_Id: string, plan: Plan, taskName: string): void {
     let id = Math.max(...plan.taskz.map(task => parseInt(task.id)), 0) + 1;
-
+    const bComplete = false;
     this.kids
       .filter(kid => kid.id === kid_Id)[0]
       .planz.filter(oPlan => oPlan.id === plan.id)[0]
       .taskz.push({
         id: id.toString(),
         name: taskName,
-        bComplete: false
+        bComplete
       });
 
     this.save();
