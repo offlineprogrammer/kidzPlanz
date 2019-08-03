@@ -77,7 +77,7 @@ export class PlanInfoPage implements OnInit {
       header: 'New Task!',
       inputs: [
         {
-          name: 'Task Name',
+          name: 'taskName',
           type: 'text',
           placeholder: 'Placeholder 1'
         }
@@ -92,8 +92,9 @@ export class PlanInfoPage implements OnInit {
           }
         }, {
           text: 'Ok',
-          handler: () => {
+          handler:  data =>  {
             console.log('Confirm Ok');
+            this.kidsService.createTask(this.kid_Id,this.plan,data.taskName)
           }
         }
       ]

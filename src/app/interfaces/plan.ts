@@ -5,5 +5,5 @@ export interface Plan {
   name: string;
   photo: string;
   date: Date;
-  taskz: Task[]
+  taskz: Task[];
  }

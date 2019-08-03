@@ -132,6 +132,21 @@ export class KidsService {
     this.save();
   }
 
+  createTask(kid_Id: string, plan: Plan, taskName: string): void {
+    let id = Math.max(...plan.taskz.map(task => parseInt(task.id)), 0) + 1;
+
+    this.kids
+      .filter(kid => kid.id === kid_Id)[0]
+      .planz.filter(oPlan => oPlan.id === plan.id)[0]
+      .taskz.push({
+        id: id.toString(),
+        name: taskName,
+        bComplete: false
+      });
+
+    this.save();
+  }
+
   deleteKid(kid: Kid): void {
     // Get the index in the array of the note that was passed in
     const index = this.kids.indexOf(kid);
