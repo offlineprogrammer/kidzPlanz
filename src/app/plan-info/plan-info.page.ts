@@ -53,7 +53,8 @@ export class PlanInfoPage implements OnInit {
     modal.onDidDismiss().then((detail: OverlayEventDetail) => {
       if (detail !== null) {
         console.log('The result:', detail.data);
-        this.plan.photo=detail.data;
+        this.plan.photo = detail.data;
+        this.kidsService.setPlanMood(this.kid_Id,this.plan);
       }
    });
     return await modal.present();
