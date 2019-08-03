@@ -42,7 +42,7 @@ export class NewPlanPage implements OnInit {
     console.log(this.newPlanForm.value);
     console.log(this.newPlanForm.controls.plandate.value);
     this.kidsService.createPlan(this.newPlanForm.controls.planname.value, this.newPlanForm.controls.plandate.value, this.kidId);
-    this.navCtrl.navigateBack('/home');
+    this.navCtrl.navigateBack('/kid-info/' + this.kidId);
        }
   }
 
