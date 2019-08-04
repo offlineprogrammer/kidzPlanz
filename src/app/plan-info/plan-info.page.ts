@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Plan} from '../interfaces/plan';
 import { ActivatedRoute } from '@angular/router';
 import { KidsService } from '../services/kids.service';
-import { NavController,AlertController,ModalController  } from '@ionic/angular';
+import { NavController, AlertController, ModalController  } from '@ionic/angular';
 import { SetMoodPage } from '../set-mood/set-mood.page';
 import { OverlayEventDetail } from '@ionic/core';
+import { Task } from '../interfaces/task';
 
 
 
@@ -30,18 +31,18 @@ export class PlanInfoPage implements OnInit {
       name: '',
       date: null,
       photo: null,
-      taskz:[]
+      taskz: []
     };
    }
 
   ngOnInit() {
-    this.kid_Id = this.route.snapshot.paramMap.get("kid_id");
-    this.plan_Id = this.route.snapshot.paramMap.get("plan_id");
+    this.kid_Id = this.route.snapshot.paramMap.get('kid_id');
+    this.plan_Id = this.route.snapshot.paramMap.get('plan_id');
     if (this.kidsService.loaded) {
-      this.plan = this.kidsService.getPlan(this.kid_Id,this.plan_Id);
+      this.plan = this.kidsService.getPlan(this.kid_Id, this.plan_Id);
     } else {
       this.kidsService.load().then(() => {
-        this.plan = this.kidsService.getPlan(this.kid_Id,this.plan_Id);
+        this.plan = this.kidsService.getPlan(this.kid_Id, this.plan_Id);
       });
     }
   }
@@ -54,7 +55,7 @@ export class PlanInfoPage implements OnInit {
       if (detail !== null) {
         console.log('The result:', detail.data);
         this.plan.photo = detail.data;
-        this.kidsService.setPlanMood(this.kid_Id,this.plan);
+        this.kidsService.setPlanMood(this.kid_Id, this.plan);
       }
    });
     return await modal.present();
@@ -66,7 +67,7 @@ export class PlanInfoPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.navigateBack('kid-info/'+this.kid_Id);
+    this.navCtrl.navigateBack('kid-info/' + this.kid_Id);
   }
 
 
@@ -94,13 +95,18 @@ export class PlanInfoPage implements OnInit {
           text: 'Ok',
           handler:  data =>  {
             console.log('Confirm Ok');
-            this.kidsService.createTask(this.kid_Id,this.plan,data.taskName)
+            this.kidsService.createTask(this.kid_Id, this.plan, data.taskName);
           }
         }
       ]
     });
 
     await alert.present();
+  }
+
+  async checkEvent(task: Task) {
+    this.kidsService.updateTask(this.kid_Id, this.plan.id, task);
+
   }
 
 

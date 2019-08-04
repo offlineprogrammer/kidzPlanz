@@ -10,6 +10,7 @@ import {
 import {
   Plan
 } from '../interfaces/plan';
+import { Task } from '../interfaces/task';
 
 
 const {
@@ -153,6 +154,15 @@ export class KidsService {
 
     this.save();
   }
+
+  updateTask(kid_Id: string, plan_Id: string, task: Task): void {
+    this.kids
+     .filter(kid => kid.id === kid_Id)[0]
+     .planz.filter(oPlan => oPlan.id === plan_Id)[0]
+     .taskz.filter(oTask => oTask.id === task.id)[0].bComplete = task.bComplete;
+   this.save();
+ }
+
 
   deleteKid(kid: Kid): void {
     // Get the index in the array of the note that was passed in

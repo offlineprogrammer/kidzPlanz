@@ -26,9 +26,9 @@
       </ion-fab>
       
       <ion-list>
-        <ion-item  *ngFor="let task of plan.taskz" routerDirection="forward">
+        <ion-item  *ngFor="let task of plan.taskz" >
           <ion-label>{{ task.name}}</ion-label>
-          <ion-checkbox color="success" slot="end" [(ngModel)]="task.bComplete"></ion-checkbox>
+          <ion-checkbox color="success" slot="end" [(ngModel)]="task.bComplete" (ionChange)="checkEvent(task)"></ion-checkbox>
         </ion-item>
       </ion-list>
       
