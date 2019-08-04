@@ -19,16 +19,16 @@
         <ion-card-title text-center>{{ plan.name }}</ion-card-title>
     </ion-card-header>
 </ion-card>
-    <ion-fab vertical="center" horizontal="end" slot="fixed">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button>
           <ion-icon name="add" (click)="addTask()">></ion-icon>
         </ion-fab-button>
       </ion-fab>
       
       <ion-list>
-        <ion-item button detail *ngFor="let task of plan.taskz" routerDirection="forward">
+        <ion-item  *ngFor="let task of plan.taskz" routerDirection="forward">
           <ion-label>{{ task.name}}</ion-label>
-          <!-- <ion-badge color="secondary">{{plan.planTaskz.length}}  </ion-badge> -->
+          <ion-checkbox color="success" slot="end" [(ngModel)]="task.bComplete"></ion-checkbox>
         </ion-item>
       </ion-list>
       
