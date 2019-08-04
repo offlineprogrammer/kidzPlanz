@@ -1,36 +1,35 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-icon name="arrow-back" (click)="goBack()" ></ion-icon>
+      <ion-icon name="arrow-back" (click)="goBack()"></ion-icon>
     </ion-buttons>
     <ion-title>{{ plan.name }}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="deletePlan()">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card >
-    <ion-img [src]='plan.photo' (click)="presentModal()" ></ion-img>
+  <ion-card>
+    <ion-img [src]='plan.photo' (click)="presentModal()"></ion-img>
     <ion-card-header>
-        <ion-card-title text-center>{{ plan.name }}</ion-card-title>
+      <ion-card-title text-center>{{ plan.name }}</ion-card-title>
     </ion-card-header>
-</ion-card>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button>
-          <ion-icon name="add" (click)="addTask()">></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
-      
-      <ion-list>
-        <ion-item  *ngFor="let task of plan.taskz" >
-          <ion-label>{{ task.name}}</ion-label>
-          <ion-checkbox color="success" slot="end" [(ngModel)]="task.bComplete" (ionChange)="checkEvent(task)"></ion-checkbox>
-        </ion-item>
-      </ion-list>
-      
+  </ion-card>
+  <ion-button expand="block" (click)="addTask()">
+    <ion-ripple-effect></ion-ripple-effect>Add Plan
+  </ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let task of plan.taskz">
+      <ion-label>{{ task.name}}</ion-label>
+      <ion-checkbox color="success" slot="end" [(ngModel)]="task.bComplete" (ionChange)="checkEvent(task)">
+      </ion-checkbox>
+    </ion-item>
+  </ion-list>
+
 
 </ion-content>

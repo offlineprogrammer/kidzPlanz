@@ -19,11 +19,7 @@
         <ion-card-title text-center>{{ kid.name }}</ion-card-title>
     </ion-card-header>
 </ion-card>
-<ion-fab vertical="center" horizontal="end" slot="fixed">
-  <ion-fab-button>
-    <ion-icon name="add" [routerLink]="['/new-plan/' + kid.id]"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
+<ion-button expand="block" [routerLink]="['/new-plan/' + kid.id]" ><ion-ripple-effect></ion-ripple-effect>Add Plan</ion-button>
 
 <ion-list>
   
