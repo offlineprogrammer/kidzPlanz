@@ -5,5 +5,6 @@ export interface Plan {
   name: string;
   photo: string;
   date: Date;
+  bComplete: boolean;
   taskz: Task[];
  }

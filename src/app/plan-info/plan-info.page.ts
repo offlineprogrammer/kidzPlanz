@@ -31,6 +31,7 @@ export class PlanInfoPage implements OnInit {
       name: '',
       date: null,
       photo: null,
+      bComplete: false,
       taskz: []
     };
    }

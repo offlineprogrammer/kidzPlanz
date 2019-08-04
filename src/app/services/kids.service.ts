@@ -56,6 +56,7 @@ export class KidsService {
       name,
       photo: 'assets/emotions/neutral.png',
       date,
+      bComplete:false,
       taskz: []
 
     });
