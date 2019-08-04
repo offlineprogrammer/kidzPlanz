@@ -15,9 +15,6 @@
 <ion-content>
   <ion-card >
     <ion-img [src]='kid.photo' ></ion-img>
-    <ion-card-header>
-        <ion-card-title text-center>{{ kid.name }}</ion-card-title>
-    </ion-card-header>
 </ion-card>
 <ion-button expand="block" [routerLink]="['/new-plan/' + kid.id]" ><ion-ripple-effect></ion-ripple-effect>Add Plan</ion-button>
 

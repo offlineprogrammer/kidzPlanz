@@ -4,3 +4,13 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+
+ion-card {
+  
+  ion-img {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50vw !important;
+    max-height: 50vh !important;
+  }
+}

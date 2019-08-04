@@ -15,9 +15,6 @@
 <ion-content>
   <ion-card>
     <ion-img [src]='plan.photo' (click)="presentModal()"></ion-img>
-    <ion-card-header>
-      <ion-card-title text-center>{{ plan.name }}</ion-card-title>
-    </ion-card-header>
   </ion-card>
   <ion-button expand="block" (click)="addTask()">
     <ion-ripple-effect></ion-ripple-effect>Add Plan
