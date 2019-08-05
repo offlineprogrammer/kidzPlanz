@@ -75,3 +75,10 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+ion-alert
+{
+    --background        : #2c3e50 !important;
+    --ion-text-color    : white !important;
+    --ion-color-step-550: white !important;
+}

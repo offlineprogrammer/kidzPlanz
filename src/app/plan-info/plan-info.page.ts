@@ -77,11 +77,12 @@ export class PlanInfoPage implements OnInit {
   async addTask() {
     const alert = await this.alertController.create({
       header: 'New Task!',
+      message: 'Add A New Task',
       inputs: [
         {
           name: 'taskName',
           type: 'text',
-          placeholder: 'Placeholder 1'
+          placeholder: 'Task Name'
         }
       ],
       buttons: [

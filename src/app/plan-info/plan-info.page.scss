@@ -7,3 +7,10 @@ ion-card {
     max-height: 50vh !important;
   }
 }
+
+ion-alert
+{
+    --background        : #2c3e50 !important;
+    --ion-text-color    : white !important;
+    --ion-color-step-550: white !important;
+}
