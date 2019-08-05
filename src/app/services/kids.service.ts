@@ -10,7 +10,9 @@ import {
 import {
   Plan
 } from '../interfaces/plan';
-import { Task } from '../interfaces/task';
+import {
+  Task
+} from '../interfaces/task';
 
 
 const {
@@ -56,7 +58,7 @@ export class KidsService {
       name,
       photo: 'assets/emotions/neutral.png',
       date,
-      bComplete:false,
+      bComplete: false,
       taskz: []
 
     });
@@ -114,15 +116,9 @@ export class KidsService {
   }
 
   deletePlan(kid_id: string, plan: Plan): void {
-    // Get the index in the array of the note that was passed in
-
     const index = this.kids
       .find(kid => kid.id === kid_id)
       .planz.indexOf(plan);
-
-
-
-    // Delete that element of the array and resave the data
     if (index > -1) {
       this.kids
         .find(kid => kid.id === kid_id)
@@ -132,17 +128,12 @@ export class KidsService {
   }
 
   setPlanMood(kid_id: string, plan: Plan): void {
-
-    /* this.kids
-    .filter(kid => kid.id === kid_id)[0]
-    .planz.filter(oPlan => oPlan.id === plan.photo)[0].photo = plan.photo; */
-
     this.kids.find(kid => kid.id === kid_id).planz.find(nplan => nplan.id === plan.id).photo = plan.photo;
     this.save();
   }
 
   createTask(kid_Id: string, plan: Plan, taskName: string): void {
-    let id = Math.max(...plan.taskz.map(task => parseInt(task.id)), 0) + 1;
+    const id = Math.max(...plan.taskz.map(task => parseInt(task.id)), 0) + 1;
     const bComplete = false;
     this.kids
       .filter(kid => kid.id === kid_Id)[0]
@@ -158,22 +149,38 @@ export class KidsService {
 
   updateTask(kid_Id: string, plan_Id: string, task: Task): void {
     this.kids
-     .filter(kid => kid.id === kid_Id)[0]
-     .planz.filter(oPlan => oPlan.id === plan_Id)[0]
-     .taskz.filter(oTask => oTask.id === task.id)[0].bComplete = task.bComplete;
-   this.save();
- }
+      .filter(kid => kid.id === kid_Id)[0]
+      .planz.filter(oPlan => oPlan.id === plan_Id)[0]
+      .taskz.filter(oTask => oTask.id === task.id)[0].bComplete = task.bComplete;
+
+    const oNotCompleteTask = this.kids
+      .filter(kid => kid.id === kid_Id)[0]
+      .planz.filter(oPlan => oPlan.id === plan_Id)[0]
+      .taskz.filter(oTask => oTask.bComplete === false);
+
+    if (oNotCompleteTask.length > 0) {
+      console.log(oNotCompleteTask);
+    } else {
+        console.log('All done');
+        this.kids
+          .filter(kid => kid.id === kid_Id)[0]
+          .planz.filter(oPlan => oPlan.id === plan_Id)[0].bComplete = true;
+      }
 
 
-  deleteKid(kid: Kid): void {
-    // Get the index in the array of the note that was passed in
-    const index = this.kids.indexOf(kid);
-
-    // Delete that element of the array and resave the data
-    if (index > -1) {
-      this.kids.splice(index, 1);
-      this.save();
+    this.save();
     }
-  }
 
-}
+
+    deleteKid(kid: Kid): void {
+      // Get the index in the array of the note that was passed in
+      const index = this.kids.indexOf(kid);
+
+      // Delete that element of the array and resave the data
+      if (index > -1) {
+        this.kids.splice(index, 1);
+        this.save();
+      }
+    }
+
+  }
