@@ -25,7 +25,7 @@
         <ion-img [src]='plan.photo'></ion-img>
       </ion-thumbnail>
     <ion-label>{{ plan.name}}</ion-label>
-    <ion-badge slot="end" color="danger">{{plan.taskz.length}}</ion-badge>
+    <ion-badge slot="end"  [color]="plan.bComplete ? 'success' : 'danger'">{{plan.taskz.length}}</ion-badge>
   
   </ion-item>
 </ion-list>
