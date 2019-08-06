@@ -19,13 +19,19 @@
 </ion-card>
 
 
-<ion-list>
+<ion-list no-border>
+
+    <ion-list-header>
+        <ion-text color="dark">
+          <h5>Planz</h5>
+        </ion-text>
+      </ion-list-header>
   
   <ion-item button detail *ngFor="let plan of kid.planz" [href]="'/plan-info/' + kid.id+'/'+plan.id" routerDirection="forward">
     <ion-thumbnail slot="start">
         <ion-img [src]='plan.photo'></ion-img>
       </ion-thumbnail>
-    <ion-label>{{ plan.name}}</ion-label>
+    <ion-label color="primary">{{ plan.name}}</ion-label>
     <ion-badge slot="end"  [color]="plan.bComplete ? 'success' : 'danger'">{{plan.taskz.length}}</ion-badge>
   
   </ion-item>

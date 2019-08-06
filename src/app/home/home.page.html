@@ -11,12 +11,17 @@
       <ion-button expand="block" [routerLink]="['/add-kid']">
           <ion-ripple-effect></ion-ripple-effect>Add Kid
         </ion-button>      
-    <ion-list>
+    <ion-list no-border>
+        <ion-list-header>
+            <ion-text color="dark">
+              <h5>Kidz</h5>
+            </ion-text>
+          </ion-list-header>
       <ion-item button detail *ngFor="let kid of kidsService.kids" [href]="'/kid-info/' + kid.id" routerDirection="forward">
         <ion-thumbnail slot="start">
           <ion-img [src]='kid.photo'></ion-img>
         </ion-thumbnail>
-        <ion-label>{{ kid.name}}</ion-label>
+        <ion-label color="primary">{{ kid.name}}</ion-label>
       </ion-item>
     </ion-list>
    

@@ -21,9 +21,14 @@
   
   </ion-card>
  
-  <ion-list>
+  <ion-list no-border>
+      <ion-list-header>
+          <ion-text color="dark">
+            <h5>Taskz</h5>
+          </ion-text>
+        </ion-list-header>
     <ion-item *ngFor="let task of plan.taskz">
-      <ion-label>{{ task.name}}</ion-label>
+      <ion-label color="primary">{{ task.name}}</ion-label>
       <ion-checkbox color="success" slot="end" [(ngModel)]="task.bComplete" (ionChange)="checkEvent(task)">
       </ion-checkbox>
     </ion-item>
