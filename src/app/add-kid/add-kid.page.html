@@ -1,16 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Add Kid</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content fullscreen>
 
 
-  <ion-list lines="full" class="ion-no-margin ion-no-padding">
-    <form [formGroup]="addKidForm">
-      <ion-item>
-        <ion-label position="stacked">Name <ion-text color="danger">*</ion-text>
+<ion-content padding>
+
+    <div padding-horizontal text-center>
+        <div class="logo"></div>
+        <h3 no-margin>
+          <ion-text color="light" class="fw700">
+            <ion-text color="secondary">Add Kid</ion-text>
+          </ion-text>
+        </h3>
+      </div>
+ 
+    <form [formGroup]="addKidForm" class="list-form">
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">Name <ion-text color="danger">*</ion-text>
         </ion-label>
         <ion-input required type="text" formControlName="kidname" name="kidname"
           [class.invalid]="!addKidForm.controls.kidname.valid && (addKidForm.controls.kidname.dirty || submitAttempt)">
@@ -26,7 +29,6 @@
     </form>
 
 
-  </ion-list>
 
   <div class="ion-padding">
     <ion-button expand="block" (click)="addKid()" class="ion-no-margin">Add Kid</ion-button>
