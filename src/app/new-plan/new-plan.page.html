@@ -1,16 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>New Plan</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content fullscreen>
+
+
+<ion-content padding>
+
+    <div padding-horizontal text-center>
+        <div class="logo"></div>
+        <h3 no-margin>
+          <ion-text color="light" class="fw700">
+            <ion-text color="secondary">Add Plan</ion-text>
+          </ion-text>
+        </h3>
+      </div>
 
     
-  <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <form [formGroup]="newPlanForm">
-    <ion-item>
-      <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
+ 
+      <form [formGroup]="newPlanForm" class="list-form">
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label position="floating">Name <ion-text color="danger">*</ion-text></ion-label>
       <ion-input required type="text" formControlName="planname" name="kiplannamedname" [class.invalid]="!newPlanForm.controls.planname.valid && (newPlanForm.controls.planname.dirty || submitAttempt)" ></ion-input>
     </ion-item>
 
@@ -18,8 +24,8 @@
         <p>Please enter a valid name.</p>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Date</ion-label>
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label position="floating">Date</ion-label>
       <ion-datetime placeholder="Select Date" formControlName="plandate" ></ion-datetime>
     </ion-item>
     
@@ -27,7 +33,7 @@
     </form>
 
 
-  </ion-list>
+
 
   <div class="ion-padding">
     <ion-button expand="block" (click)="addPlan()" class="ion-no-margin">Add Plan</ion-button>
