@@ -160,6 +160,9 @@ export class KidsService {
 
     if (oNotCompleteTask.length > 0) {
       console.log(oNotCompleteTask);
+      this.kids
+          .filter(kid => kid.id === kid_Id)[0]
+          .planz.filter(oPlan => oPlan.id === plan_Id)[0].bComplete = false;
     } else {
         console.log('All done');
         this.kids
