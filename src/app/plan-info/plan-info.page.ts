@@ -1,11 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import {Plan} from '../interfaces/plan';
-import { ActivatedRoute } from '@angular/router';
-import { KidsService } from '../services/kids.service';
-import { NavController, AlertController, ModalController  } from '@ionic/angular';
-import { SetMoodPage } from '../set-mood/set-mood.page';
-import { OverlayEventDetail } from '@ionic/core';
-import { Task } from '../interfaces/task';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Plan
+} from '../interfaces/plan';
+import {
+  ActivatedRoute
+} from '@angular/router';
+import {
+  KidsService
+} from '../services/kids.service';
+import {
+  NavController,
+  AlertController,
+  ModalController
+} from '@ionic/angular';
+import {
+  SetMoodPage
+} from '../set-mood/set-mood.page';
+import {
+  OverlayEventDetail
+} from '@ionic/core';
+import {
+  Task
+} from '../interfaces/task';
 
 
 
@@ -24,7 +43,7 @@ export class PlanInfoPage implements OnInit {
     private route: ActivatedRoute,
     private kidsService: KidsService,
     private navCtrl: NavController,
-    private  alertController: AlertController,
+    private alertController: AlertController,
     private modalController: ModalController) {
     this.plan = {
       id: '',
@@ -34,7 +53,7 @@ export class PlanInfoPage implements OnInit {
       bComplete: false,
       taskz: []
     };
-   }
+  }
 
   ngOnInit() {
     this.kid_Id = this.route.snapshot.paramMap.get('kid_id');
@@ -55,10 +74,12 @@ export class PlanInfoPage implements OnInit {
     modal.onDidDismiss().then((detail: OverlayEventDetail) => {
       if (detail !== null) {
         console.log('The result:', detail.data);
-        this.plan.photo = detail.data;
-        this.kidsService.setPlanMood(this.kid_Id, this.plan);
+        if (detail.data !== false) {
+          this.plan.photo = detail.data;
+          this.kidsService.setPlanMood(this.kid_Id, this.plan);
+        }
       }
-   });
+    });
     return await modal.present();
   }
 
@@ -78,29 +99,25 @@ export class PlanInfoPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'New Task!',
       message: 'Add A New Task',
-      inputs: [
-        {
-          name: 'taskName',
-          type: 'text',
-          placeholder: 'Task Name'
+      inputs: [{
+        name: 'taskName',
+        type: 'text',
+        placeholder: 'Task Name'
+      }],
+      buttons: [{
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
         }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Ok',
-          handler:  data =>  {
-            console.log('Confirm Ok');
-            this.kidsService.createTask(this.kid_Id, this.plan, data.taskName);
-          }
+      }, {
+        text: 'Add',
+        handler: data => {
+          console.log('Confirm Ok');
+          this.kidsService.createTask(this.kid_Id, this.plan, data.taskName);
         }
-      ]
+      }]
     });
 
     await alert.present();
