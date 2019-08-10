@@ -1,6 +1,6 @@
 {
-  "appId": "com.kidzplanz",
-  "appName": "KidzPlanz",
+  "appId": "io.ionic.starter",
+  "appName": "kidzPlanz",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www"
