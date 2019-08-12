@@ -9,7 +9,7 @@ import { KidsService } from '../services/kids.service';
 })
 export class SetMoodPage implements OnInit {
 
-  private planMoods: string[];
+  public planMoods: string[];
 
   constructor(private modalController: ModalController,private kidsService: KidsService,
     private navParams: NavParams) { }

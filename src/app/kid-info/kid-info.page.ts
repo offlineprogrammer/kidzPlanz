@@ -10,7 +10,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./kid-info.page.scss'],
 })
 export class KidInfoPage implements OnInit {
-  private kid: Kid;
+  public kid: Kid;
 
   constructor(  private route: ActivatedRoute, private kidsService: KidsService, private navCtrl: NavController, ) {
     this.kid = {

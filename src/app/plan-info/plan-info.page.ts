@@ -35,7 +35,7 @@ import {
 })
 export class PlanInfoPage implements OnInit {
 
-  private plan: Plan;
+  public plan: Plan;
   private kid_Id: string;
   private plan_Id: string;
 

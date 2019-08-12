@@ -10,11 +10,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {SetMoodPage} from '../app/set-mood/set-mood.page';
 import { ErrorHandlingService } from './services/error-handling.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { SetMoodPageModule } from './set-mood/set-mood.module';
 
 @NgModule({
   declarations: [AppComponent,SetMoodPage],
   entryComponents: [SetMoodPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, SetMoodPageModule, IonicModule.forRoot(), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     SplashScreen,

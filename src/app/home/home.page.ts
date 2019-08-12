@@ -8,7 +8,7 @@ import { KidsService } from '../services/kids.service';
 export class HomePage implements OnInit {
 
   constructor(
-    private kidsService: KidsService,
+    public kidsService: KidsService,
   ) {}
 
   ngOnInit() {

@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./new-plan.page.scss'],
 })
 export class NewPlanPage implements OnInit {
-  private kidId: string;
+  public kidId: string;
 
   public submitAttempt = false;
   public newPlanForm: FormGroup;
