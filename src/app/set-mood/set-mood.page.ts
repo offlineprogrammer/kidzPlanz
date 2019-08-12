@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalController, NavParams} from '@ionic/angular';
+import {ModalController} from '@ionic/angular';
 import { KidsService } from '../services/kids.service';
 
 @Component({
@@ -11,8 +11,7 @@ export class SetMoodPage implements OnInit {
 
   public planMoods: string[];
 
-  constructor(private modalController: ModalController,private kidsService: KidsService,
-    private navParams: NavParams) { }
+  constructor(private modalController: ModalController,private kidsService: KidsService) { }
 
   ngOnInit() {
     if (this.kidsService.loaded) {

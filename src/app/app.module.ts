@@ -13,11 +13,19 @@ import { ErrorHandlingService } from './services/error-handling.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SetMoodPageModule } from './set-mood/set-mood.module';
+import { HttpModule } from '@angular/http';
+import {   HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [AppComponent,SetMoodPage],
   entryComponents: [SetMoodPage],
-  imports: [BrowserModule, SetMoodPageModule, IonicModule.forRoot(), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
+  imports: [BrowserModule,
+    HttpModule,
+    HttpClientModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     SplashScreen,
