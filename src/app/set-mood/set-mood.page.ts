@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import { KidsService } from '../services/kids.service';
+import { AnalyticsService } from '../services/analytics.service';
 
 @Component({
   selector: 'app-set-mood',
@@ -11,7 +12,7 @@ export class SetMoodPage implements OnInit {
 
   public planMoods: string[];
 
-  constructor(private modalController: ModalController,private kidsService: KidsService) { }
+  constructor(private modalController: ModalController,private kidsService: KidsService,private analytics: AnalyticsService) { }
 
   ngOnInit() {
     if (this.kidsService.loaded) {
@@ -29,7 +30,7 @@ export class SetMoodPage implements OnInit {
 
   async setPlanMood(planMood) {
 
-    
+    this.analytics.trackEvent('User', 'Set Mood', planMood);
     await this.modalController.dismiss(planMood);
   }
 

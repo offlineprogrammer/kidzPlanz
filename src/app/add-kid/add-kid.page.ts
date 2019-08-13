@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { KidsService } from '../services/kids.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AnalyticsService } from '../services/analytics.service';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class AddKidPage implements OnInit {
     private kidsService: KidsService,
     public formBuilder: FormBuilder,
     private navCtrl: NavController,
+    private analytics: AnalyticsService,
   ) {
 
     this.addKidForm = formBuilder.group({
@@ -34,11 +36,12 @@ export class AddKidPage implements OnInit {
   addKid() {
     this.submitAttempt = true;
     if (this.addKidForm.valid){
-    console.log('success!')
-    console.log(this.addKidForm.value);
-    console.log(this.addKidForm.controls.kidname.value);
-    this.kidsService.createKid(this.addKidForm.controls.kidname.value);
-    this.navCtrl.navigateBack('/home');
+      this.analytics.trackEvent('User', 'Create Kid', this.addKidForm.controls.kidname.value);
+      console.log('success!');
+      console.log(this.addKidForm.value);
+      console.log(this.addKidForm.controls.kidname.value);
+      this.kidsService.createKid(this.addKidForm.controls.kidname.value);
+      this.navCtrl.navigateBack('/home');
        }
   }
 

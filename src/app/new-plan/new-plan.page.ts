@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { KidsService } from '../services/kids.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AnalyticsService } from '../services/analytics.service';
 
 @Component({
   selector: 'app-new-plan',
@@ -20,6 +21,7 @@ export class NewPlanPage implements OnInit {
     private kidsService: KidsService,
     public formBuilder: FormBuilder,
     private navCtrl: NavController,
+    private analytics: AnalyticsService,
   ) {
 
     this.newPlanForm = formBuilder.group({
@@ -38,11 +40,12 @@ export class NewPlanPage implements OnInit {
   addPlan() {
     this.submitAttempt = true;
     if (this.newPlanForm.valid) {
-    console.log('success!');
-    console.log(this.newPlanForm.value);
-    console.log(this.newPlanForm.controls.plandate.value);
-    this.kidsService.createPlan(this.newPlanForm.controls.planname.value, this.newPlanForm.controls.plandate.value, this.kidId);
-    this.navCtrl.navigateBack('/kid-info/' + this.kidId);
+      this.analytics.trackEvent('User', 'Create Plan', this.newPlanForm.controls.planname.value);
+      console.log('success!');
+      console.log(this.newPlanForm.value);
+      console.log(this.newPlanForm.controls.plandate.value);
+      this.kidsService.createPlan(this.newPlanForm.controls.planname.value, this.newPlanForm.controls.plandate.value, this.kidId);
+      this.navCtrl.navigateBack('/kid-info/' + this.kidId);
        }
   }
 
