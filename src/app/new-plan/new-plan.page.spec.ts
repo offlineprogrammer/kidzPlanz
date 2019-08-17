@@ -1,6 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { IonicModule } from '@ionic/angular';
 import { NewPlanPage } from './new-plan.page';
 
 describe('NewPlanPage', () => {
@@ -9,6 +11,7 @@ describe('NewPlanPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule,RouterTestingModule,IonicModule],
       declarations: [ NewPlanPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
