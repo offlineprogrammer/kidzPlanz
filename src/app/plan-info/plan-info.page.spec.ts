@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { PlanInfoPage } from './plan-info.page';
+import { FormsModule } from '@angular/forms';
 
 describe('PlanInfoPage', () => {
   let component: PlanInfoPage;
@@ -11,7 +12,7 @@ describe('PlanInfoPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule,RouterTestingModule,IonicModule],
+      imports: [ReactiveFormsModule,RouterTestingModule,IonicModule,FormsModule],
       declarations: [ PlanInfoPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
