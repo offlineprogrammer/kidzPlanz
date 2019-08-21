@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.offlineprogrammer.kidzplanz",
+               "sha256_cert_fingerprints": ["52:30:DF:72:D4:82:2F:E1:C8:22:9F:A3:BB:B5:18:BB:12:22:E6:D9:74:81:41:59:97:89:EC:CF:A2:D1:4D:5A"] }
+}]
