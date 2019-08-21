@@ -53,6 +53,7 @@ describe('HomePage', () => {
     de = fixture.debugElement.query(By.css("ion-list ion-item"));
     el = de.nativeElement;
     expect(el.textContent).toContain(firstKid.name);
+  
 
   });
 
