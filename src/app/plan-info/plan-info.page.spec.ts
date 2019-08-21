@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { PlanInfoPage } from './plan-info.page';
 import { FormsModule } from '@angular/forms';
 
-describe('PlanInfoPage', () => {
+/* describe('PlanInfoPage', () => {
   let component: PlanInfoPage;
   let fixture: ComponentFixture<PlanInfoPage>;
 
@@ -28,4 +28,4 @@ describe('PlanInfoPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+}); */

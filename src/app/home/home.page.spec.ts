@@ -1,17 +1,29 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+import { KidsService } from '../services/kids.service';
+import { KidsMock } from '../mocks';
 
 import { HomePage } from './home.page';
 
 describe('HomePage', () => {
   let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+  let fixture: ComponentFixture < HomePage > ;
+  let de: DebugElement;
+  let el: HTMLElement;
 
-  beforeEach(async(() => {
+  beforeEach(async (() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePage ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
+        declarations: [HomePage],
+
+        providers: [{
+            provide: KidsService,
+            useClass: KidsMock
+          }
+        ],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      })
       .compileComponents();
   }));
 
@@ -21,7 +33,27 @@ describe('HomePage', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    fixture.destroy();
+    component = null;
+    de = null;
+    el = null;
+  });
+
   it('should create', () => {
+    expect(fixture).toBeTruthy();
     expect(component).toBeTruthy();
   });
+
+  it('displays kids containing a name in the list', () => {
+
+    let kidsService = fixture.debugElement.injector.get(KidsService);
+    let firstKid = kidsService.kids[0];
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css("ion-list ion-item"));
+    el = de.nativeElement;
+    expect(el.textContent).toContain(firstKid.name);
+
+  });
+
 });
