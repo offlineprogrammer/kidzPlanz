@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { KidsService } from '../services/kids.service';
-import { KidsMock } from '../mocks';
+import { KidsServiceMock } from '../mocks';
 
 import { HomePage } from './home.page';
 
@@ -19,7 +19,7 @@ describe('HomePage', () => {
 
         providers: [{
             provide: KidsService,
-            useClass: KidsMock
+            useClass: KidsServiceMock
           }
         ],
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -47,8 +47,8 @@ describe('HomePage', () => {
 
   it('displays kids containing a name in the list', () => {
 
-    let kidsService = fixture.debugElement.injector.get(KidsService);
-    let firstKid = kidsService.kids[0];
+    const kidsService = fixture.debugElement.injector.get(KidsService);
+    const firstKid = kidsService.kids[0];
     fixture.detectChanges();
     de = fixture.debugElement.query(By.css("ion-list ion-item"));
     el = de.nativeElement;
