@@ -10,4 +10,9 @@ export class KidsServiceMock {
     this.loaded = true;
   }
 
+  async createKid() {
+   
+    this.loaded = true;
+  }
+
 }

@@ -21,7 +21,7 @@ describe('AddKidPage', () => {
   beforeEach(async (() => {
     TestBed.configureTestingModule({
         declarations: [AddKidPage],
-        imports: [ReactiveFormsModule,RouterTestingModule,IonicModule],
+        imports: [ReactiveFormsModule, RouterTestingModule, IonicModule],
 
         providers: [{
             provide: KidsService,
@@ -53,14 +53,14 @@ describe('AddKidPage', () => {
 
   it('displays a Form to add kid', () => {
     fixture.detectChanges();
-    de = fixture.debugElement.query(By.css("form ion-item ion-input"));
+    de = fixture.debugElement.query(By.css('form ion-item ion-input'));
     el = de.nativeElement;
     expect(el.getAttribute('formcontrolname')).toContain('kidname');
   });
 
   it('the form is valid when the kid name is valid', () => {
     fixture.detectChanges();
-    let form = component.addKidForm;
+    const form = component.addKidForm;
     console.log(form);
 
     expect(form.get('kidname').valid).toEqual(false);
@@ -71,7 +71,7 @@ describe('AddKidPage', () => {
 
   it('the form is NOT valid when the kid name is NOT valid', () => {
     fixture.detectChanges();
-    let form = component.addKidForm;
+    const form = component.addKidForm;
     console.log(form);
 
     expect(form.get('kidname').valid).toEqual(false);
@@ -82,7 +82,7 @@ describe('AddKidPage', () => {
 
   it('the form is NOT valid when the kid name Empty', () => {
     fixture.detectChanges();
-    let form = component.addKidForm;
+    const form = component.addKidForm;
     console.log(form);
 
     expect(form.get('kidname').valid).toEqual(false);
@@ -91,7 +91,24 @@ describe('AddKidPage', () => {
     expect(form.valid).toEqual(false);
   });
 
-  
+  it('You can click [Add Kid] when the form is valid ', () => {
+    fixture.detectChanges();
+    const form = component.addKidForm;
+    console.log(form);
+
+    expect(form.get('kidname').valid).toEqual(false);
+    form.get('kidname').setValue('Test Kid');
+    expect(form.get('kidname').valid).toEqual(true);
+    expect(form.valid).toEqual(true);
+
+    spyOn(console, 'log');
+
+    component.addKid();
+    fixture.detectChanges();
+
+    expect(console.log).toHaveBeenCalled();
+
+  });
 
 
 });
