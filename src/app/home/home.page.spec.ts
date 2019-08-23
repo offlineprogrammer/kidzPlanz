@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { KidsService } from '../services/kids.service';
 import { KidsServiceMock } from '../mocks';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HomePage } from './home.page';
 
@@ -16,6 +17,7 @@ describe('HomePage', () => {
   beforeEach(async (() => {
     TestBed.configureTestingModule({
         declarations: [HomePage],
+        imports:[RouterTestingModule],
 
         providers: [{
             provide: KidsService,
@@ -46,15 +48,28 @@ describe('HomePage', () => {
   });
 
   it('displays kids containing a name in the list', () => {
-
     const kidsService = fixture.debugElement.injector.get(KidsService);
     const firstKid = kidsService.kids[0];
     fixture.detectChanges();
     de = fixture.debugElement.query(By.css("ion-list ion-item"));
     el = de.nativeElement;
     expect(el.textContent).toContain(firstKid.name);
-  
-
   });
+
+  it('displays a button to [Add Kid]', () => {
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css("ion-button"));
+    el = de.nativeElement;
+    expect(el.textContent).toContain('Add Kid');
+  });
+
+
+  it('The [Add Kid] routes to add-Kid page', () => {
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css("ion-button"));
+    el = de.nativeElement;
+    expect(el.getAttribute('ng-reflect-router-link')).toContain('/add-kid');
+  });
+
 
 });
