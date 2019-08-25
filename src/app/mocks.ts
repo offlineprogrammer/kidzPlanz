@@ -16,3 +16,12 @@ export class KidsServiceMock {
   }
 
 }
+
+export class NavMock {
+
+  async navigateBack() {
+   
+    
+  }
+
+}
