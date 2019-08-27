@@ -26,10 +26,18 @@ export class KidInfoPage implements OnInit {
   ngOnInit() {
     this.mykidId = this.route.snapshot.params.id;
     if (this.kidsService.loaded) {
-      this.kid = this.kidsService.getKid(this.mykidId);
+      this.kidsService.getKid(this.mykidId).then((result) => {
+
+        this.kid = result;
+
+      });
     } else {
       this.kidsService.load().then(() => {
-        this.kid = this.kidsService.getKid(this.mykidId);
+        this.kidsService.getKid(this.mykidId).then((result) => {
+
+          this.kid = result;
+  
+        });
       });
     }
   }

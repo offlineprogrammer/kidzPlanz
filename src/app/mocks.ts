@@ -16,7 +16,6 @@ export class KidsServiceMock {
   }
 
   async getKid() {
-    console.log(this.kids[0]) ;
     return this.kids[0];
   }
 

@@ -13,6 +13,7 @@ import {
 import {
   Task
 } from '../interfaces/task';
+import { promise } from 'protractor';
 
 
 const {
@@ -102,7 +103,7 @@ export class KidsService {
       .planz.find(plan => plan.id === plan_Id);
   }
 
-  getKid(id: string): Kid {
+  async getKid(id: string): Promise<Kid> {
     return this.kids.find(kid => kid.id === id);
   }
 
