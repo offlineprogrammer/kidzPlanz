@@ -3,7 +3,7 @@ export class KidsServiceMock {
     {name: 'myKid', photo: 'myphoto', id: '1'}
   ];
 
-  public loaded = false;
+  public loaded = true;
 
   async load() {
    
@@ -13,6 +13,11 @@ export class KidsServiceMock {
   async createKid() {
    
     this.loaded = true;
+  }
+
+  async getKid() {
+    console.log(this.kids[0]) ;
+    return this.kids[0];
   }
 
 }

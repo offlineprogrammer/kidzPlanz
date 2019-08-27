@@ -11,8 +11,9 @@ import { NavController } from '@ionic/angular';
 })
 export class KidInfoPage implements OnInit {
   public kid: Kid;
+  public mykidId: string;
 
-  constructor(  private route: ActivatedRoute, private kidsService: KidsService, private navCtrl: NavController, ) {
+  constructor(  public route: ActivatedRoute, private kidsService: KidsService, private navCtrl: NavController, ) {
     this.kid = {
       id: '',
       name: '',
@@ -23,12 +24,12 @@ export class KidInfoPage implements OnInit {
    }
 
   ngOnInit() {
-    const kidId = this.route.snapshot.paramMap.get('id');
+    this.mykidId = this.route.snapshot.params.id;
     if (this.kidsService.loaded) {
-      this.kid = this.kidsService.getKid(kidId);
+      this.kid = this.kidsService.getKid(this.mykidId);
     } else {
       this.kidsService.load().then(() => {
-        this.kid = this.kidsService.getKid(kidId);
+        this.kid = this.kidsService.getKid(this.mykidId);
       });
     }
   }
