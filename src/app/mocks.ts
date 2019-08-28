@@ -1,6 +1,26 @@
 export class KidsServiceMock {
   public kids: any = [
-    {name: 'myKid', photo: 'myphoto', id: '1'}
+    {
+      name: 'myKid', 
+      photo: 'myphoto', 
+      id: '1',
+      planz: [
+        {
+          id: '1',
+          name: 'myplan',
+          photo: 'planphoto',
+          date: Date.now,
+          bComplete: false,
+          taskz: [
+            {
+              id: '1',
+              name: 'mytask',
+              bComplete: false
+            }
+          ]
+        }
+      ]
+    }
   ];
 
   public loaded = true;
