@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -7,12 +7,15 @@ import { KidInfoPage } from './kid-info.page';
 import { KidsServiceMock } from '../mocks';
 import { KidsService } from '../services/kids.service';
 import { ActivatedRoute } from '@angular/router';
+import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 // import { Observable } from 'rxjs/Observable';
 
 describe('KidInfoPage', () => {
   let component: KidInfoPage;
   let fixture: ComponentFixture<KidInfoPage>;
+  let de: DebugElement;
+  let el: HTMLElement;
 
 
 
@@ -33,7 +36,7 @@ describe('KidInfoPage', () => {
   }));
 
   beforeEach(() => {
-    
+
     fixture = TestBed.createComponent(KidInfoPage);
     component = fixture.componentInstance;
 
@@ -64,9 +67,17 @@ describe('KidInfoPage', () => {
     expect(component.kid.photo).toEqual('myphoto');
 
 });
+}));
 
- 
-   }));
+  it('displays a list of planz', async(() => {
+    fixture.whenStable().then(() => {
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css('ion-list ion-item'));
+    el = de.nativeElement;
+    console.log(el);
+    expect(el.getAttribute('ng-reflect-href')).toContain('/plan-info');
+});
+}));
 
 
 });
