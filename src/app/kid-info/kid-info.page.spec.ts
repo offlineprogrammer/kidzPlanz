@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
@@ -8,7 +8,6 @@ import { KidsServiceMock } from '../mocks';
 import { KidsService } from '../services/kids.service';
 import { ActivatedRoute } from '@angular/router';
 import { By } from '@angular/platform-browser';
-import { of } from 'rxjs';
 
 
 describe('KidInfoPage', () => {

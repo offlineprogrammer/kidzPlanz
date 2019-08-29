@@ -8,6 +8,7 @@ import { KidsServiceMock } from '../mocks';
 import { KidsService } from '../services/kids.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 describe('PlanInfoPage', () => {
   let component: PlanInfoPage;
@@ -49,21 +50,27 @@ describe('PlanInfoPage', () => {
     expect(component.plan_Id).toEqual('1');
   });
 
-
-
   it('it should receive the Plan Details ', async(() => {
-
-    // const kidsService = fixture.debugElement.injector.get(KidsService);
-    // kidsService.load();
-     console.log('component.plan');
-   //  tick();
-     fixture.whenStable().then(() => {
-    // This is called when ALL pending promises have been resolved
+    fixture.whenStable().then(() => {
     fixture.detectChanges();
     expect(component.plan.name).toEqual('myplan');
     expect(component.plan.photo).toEqual('planphoto');
+  });
 
-});
 }));
+
+  it('displays a list of Taskz', async(() => {
+  fixture.whenStable().then(() => {
+  fixture.detectChanges();
+  de = fixture.debugElement.query(By.css('ion-list ion-item ion-label'));
+  el = de.nativeElement;
+  console.log(el);
+  console.log(el.textContent);
+  expect(el.textContent).toEqual('mytask');
+});
+
+}));
+
+
 
 });
