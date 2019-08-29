@@ -39,6 +39,10 @@ export class KidsServiceMock {
     return this.kids[0];
   }
 
+  async getPlan() {
+    return this.kids[0].planz[0];
+  }
+
 }
 
 export class NavMock {

@@ -9,7 +9,7 @@ import { KidsService } from '../services/kids.service';
 import { ActivatedRoute } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
-// import { Observable } from 'rxjs/Observable';
+
 
 describe('KidInfoPage', () => {
   let component: KidInfoPage;

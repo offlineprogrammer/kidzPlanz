@@ -56,8 +56,8 @@ export class PlanInfoPage implements OnInit {
   }
 
   ngOnInit() {
-    this.kid_Id = this.route.snapshot.paramMap.get('kid_id');
-    this.plan_Id = this.route.snapshot.paramMap.get('plan_id');
+    this.kid_Id = this.route.snapshot.params.kid_id;
+    this.plan_Id = this.route.snapshot.params.plan_id;
     if (this.kidsService.loaded) {
       this.plan = this.kidsService.getPlan(this.kid_Id, this.plan_Id);
     } else {
