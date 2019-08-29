@@ -40,4 +40,30 @@ describe('PlanInfoPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('it should receive the Kid Id ', () => {
+    expect(component.kid_Id).toEqual('1');
+  });
+
+  it('it should receive the Plan Id ', () => {
+    expect(component.plan_Id).toEqual('1');
+  });
+
+
+
+  it('it should receive the Plan Details ', async(() => {
+
+    // const kidsService = fixture.debugElement.injector.get(KidsService);
+    // kidsService.load();
+     console.log('component.plan');
+   //  tick();
+     fixture.whenStable().then(() => {
+    // This is called when ALL pending promises have been resolved
+    fixture.detectChanges();
+    expect(component.plan.name).toEqual('myplan');
+    expect(component.plan.photo).toEqual('planphoto');
+
+});
+}));
+
 });

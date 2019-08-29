@@ -36,8 +36,8 @@ import {
 export class PlanInfoPage implements OnInit {
 
   public plan: Plan;
-  private kid_Id: string;
-  private plan_Id: string;
+  public kid_Id: string;
+  public plan_Id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -59,10 +59,19 @@ export class PlanInfoPage implements OnInit {
     this.kid_Id = this.route.snapshot.params.kid_id;
     this.plan_Id = this.route.snapshot.params.plan_id;
     if (this.kidsService.loaded) {
-      this.plan = this.kidsService.getPlan(this.kid_Id, this.plan_Id);
+      this.kidsService.getPlan(this.kid_Id, this.plan_Id).then((result) => {
+
+        this.plan = result;
+
+      });
+     
     } else {
       this.kidsService.load().then(() => {
-        this.plan = this.kidsService.getPlan(this.kid_Id, this.plan_Id);
+        this.kidsService.getPlan(this.kid_Id, this.plan_Id).then((result) => {
+
+          this.plan = result;
+  
+        });
       });
     }
   }

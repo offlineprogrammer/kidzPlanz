@@ -97,7 +97,7 @@ export class KidsService {
 
   }
 
-  getPlan(kid_id: string, plan_Id): Plan {
+  async getPlan(kid_id: string, plan_Id): Promise<Plan> {
     return this.kids
       .find(kid => kid.id === kid_id)
       .planz.find(plan => plan.id === plan_Id);
