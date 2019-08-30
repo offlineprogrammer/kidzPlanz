@@ -71,6 +71,19 @@ describe('PlanInfoPage', () => {
 
 }));
 
+  it('it should have a button to set the Mood', async(() => {
+  fixture.whenStable().then(() => {
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css('ion-content ion-card ion-button'));
+    el = de.nativeElement;
+    console.log(el);
+    console.log(el.textContent);
+    expect(el.textContent).toContain('Set Mood');
+});
+}));
+
+
+
 
 
 });
