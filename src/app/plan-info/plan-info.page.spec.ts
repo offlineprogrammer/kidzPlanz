@@ -77,12 +77,41 @@ describe('PlanInfoPage', () => {
     de = fixture.debugElement.query(By.css('ion-content ion-card ion-button'));
     el = de.nativeElement;
     console.log(el);
-    console.log(el.textContent);
+    console.log(el.getAttributeNames());
+    console.log(el.getAttribute('click'));
     expect(el.textContent).toContain('Set Mood');
 });
 }));
 
+  /* it('Set Mood button should call presentModal', async(() => {
+    spyOn(component, 'test');
+    // fixture.detectChanges();
+    // let moodButton = fixture.debugElement.nativeElement.querySelector('ion-content ion-card ion-button');
+    // console.log(moodButton);
+    // moodButton.click();
+    // expect(component.presentModal).toHaveBeenCalled();
+  //  el = fixture.debugElement.query(By.css('ion-content ion-card ion-button'));//.nativeElement.click();
 
+    fixture.whenStable().then(() => {
+      de = fixture.debugElement.query(By.css('ion-content ion-card ion-button'));
+      de.triggerEventHandler('click', null);
+      fixture.detectChanges();
+     // expect(component.test).toHaveBeenCalled();
+  });
+    // moodButton.triggerEventHandler('click', null);
+
+})); */
+
+  it('should', async(() => {
+  spyOn(component, 'onEditButtonClick');
+
+  const button = fixture.debugElement.nativeElement.querySelector('ion-content ion-card ion-button');
+  button.click();
+
+  fixture.whenStable().then(() => {
+    expect(component.onEditButtonClick).toHaveBeenCalled();
+  });
+}));
 
 
 

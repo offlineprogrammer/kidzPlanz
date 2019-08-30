@@ -64,13 +64,13 @@ export class PlanInfoPage implements OnInit {
         this.plan = result;
 
       });
-     
+
     } else {
       this.kidsService.load().then(() => {
         this.kidsService.getPlan(this.kid_Id, this.plan_Id).then((result) => {
 
           this.plan = result;
-  
+
         });
       });
     }
@@ -100,6 +100,14 @@ export class PlanInfoPage implements OnInit {
   goBack() {
     this.navCtrl.navigateBack('kid-info/' + this.kid_Id);
   }
+
+  onEditButtonClick() {
+    console.log('Worked!!!');
+  }
+
+async test() {
+  return true;
+}
 
 
 
