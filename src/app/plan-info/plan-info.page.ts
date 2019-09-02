@@ -101,13 +101,7 @@ export class PlanInfoPage implements OnInit {
     this.navCtrl.navigateBack('kid-info/' + this.kid_Id);
   }
 
-  onEditButtonClick() {
-    console.log('Worked!!!');
-  }
-
-async test() {
-  return true;
-}
+ 
 
 
 

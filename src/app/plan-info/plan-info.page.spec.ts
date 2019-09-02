@@ -56,7 +56,6 @@ describe('PlanInfoPage', () => {
     expect(component.plan.name).toEqual('myplan');
     expect(component.plan.photo).toEqual('planphoto');
   });
-
 }));
 
   it('displays a list of Taskz', async(() => {
@@ -64,11 +63,8 @@ describe('PlanInfoPage', () => {
   fixture.detectChanges();
   de = fixture.debugElement.query(By.css('ion-list ion-item ion-label'));
   el = de.nativeElement;
-  console.log(el);
-  console.log(el.textContent);
   expect(el.textContent).toEqual('mytask');
 });
-
 }));
 
   it('it should have a button to set the Mood', async(() => {
@@ -76,40 +72,16 @@ describe('PlanInfoPage', () => {
     fixture.detectChanges();
     de = fixture.debugElement.query(By.css('ion-content ion-card ion-button'));
     el = de.nativeElement;
-    console.log(el);
-    console.log(el.getAttributeNames());
-    console.log(el.getAttribute('click'));
     expect(el.textContent).toContain('Set Mood');
 });
 }));
 
-  /* it('Set Mood button should call presentModal', async(() => {
-    spyOn(component, 'test');
-    // fixture.detectChanges();
-    // let moodButton = fixture.debugElement.nativeElement.querySelector('ion-content ion-card ion-button');
-    // console.log(moodButton);
-    // moodButton.click();
-    // expect(component.presentModal).toHaveBeenCalled();
-  //  el = fixture.debugElement.query(By.css('ion-content ion-card ion-button'));//.nativeElement.click();
-
-    fixture.whenStable().then(() => {
-      de = fixture.debugElement.query(By.css('ion-content ion-card ion-button'));
-      de.triggerEventHandler('click', null);
-      fixture.detectChanges();
-     // expect(component.test).toHaveBeenCalled();
-  });
-    // moodButton.triggerEventHandler('click', null);
-
-})); */
-
-  it('should', async(() => {
-  spyOn(component, 'onEditButtonClick');
-
+  it('Set Mood button should call presentModal', async(() => {
+  spyOn(component, 'presentModal');
   const button = fixture.debugElement.nativeElement.querySelector('ion-content ion-card ion-button');
   button.click();
-
   fixture.whenStable().then(() => {
-    expect(component.onEditButtonClick).toHaveBeenCalled();
+    expect(component.presentModal).toHaveBeenCalled();
   });
 }));
 
