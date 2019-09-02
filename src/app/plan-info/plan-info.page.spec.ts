@@ -85,6 +85,22 @@ describe('PlanInfoPage', () => {
   });
 }));
 
+  it('it should have a button to set the Reward', async(() => {
+  fixture.whenStable().then(() => {
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css('.rewardButton'));
+    el = de.nativeElement;
+    expect(el.textContent).toContain('Set Reward');
+});
+}));
 
+  it('it should display the Reward image', async(() => {
+  fixture.whenStable().then(() => {
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css('.rewardImg'));
+    el = de.nativeElement;
+    expect(el.getAttribute('ng-reflect-src')).toContain('planreward');
+});
+}));
 
 });

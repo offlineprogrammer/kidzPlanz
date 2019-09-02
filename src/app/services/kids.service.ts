@@ -58,6 +58,7 @@ export class KidsService {
       id: id.toString(),
       name,
       photo: 'assets/emotions/neutral.png',
+      reward: 'assets/emotions/neutral.png',
       date,
       bComplete: false,
       taskz: []

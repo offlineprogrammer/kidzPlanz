@@ -9,6 +9,7 @@ export class KidsServiceMock {
           id: '1',
           name: 'myplan',
           photo: 'planphoto',
+          reward: 'planreward',
           date: Date.now,
           bComplete: false,
           taskz: [
