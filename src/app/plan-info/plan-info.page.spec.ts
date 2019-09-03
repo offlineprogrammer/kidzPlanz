@@ -103,4 +103,13 @@ describe('PlanInfoPage', () => {
 });
 }));
 
+  it('Set Reward button should call setReward', async(() => {
+  spyOn(component, 'setReward');
+  const button = fixture.debugElement.query(By.css('.rewardButton')).nativeElement;
+  button.click();
+  fixture.whenStable().then(() => {
+    expect(component.setReward).toHaveBeenCalled();
+  });
+}));
+
 });

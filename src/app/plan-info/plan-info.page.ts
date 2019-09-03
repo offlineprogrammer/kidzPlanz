@@ -25,6 +25,7 @@ import {
 import {
   Task
 } from '../interfaces/task';
+import { SetRewardPage } from '../set-reward/set-reward.page';
 
 
 
@@ -80,6 +81,22 @@ export class PlanInfoPage implements OnInit {
   async presentModal() {
     const modal = await this.modalController.create({
       component: SetMoodPage
+    });
+    modal.onDidDismiss().then((detail: OverlayEventDetail) => {
+      if (detail !== null) {
+        console.log('The result:', detail.data);
+        if (detail.data !== false) {
+          this.plan.photo = detail.data;
+          this.kidsService.setPlanMood(this.kid_Id, this.plan);
+        }
+      }
+    });
+    return await modal.present();
+  }
+
+  async setReward() {
+    const modal = await this.modalController.create({
+      component: SetRewardPage
     });
     modal.onDidDismiss().then((detail: OverlayEventDetail) => {
       if (detail !== null) {
