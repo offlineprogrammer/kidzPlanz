@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'new-plan/:id', loadChildren: './new-plan/new-plan.module#NewPlanPageModule' },
   { path: 'plan-info/:kid_id/:plan_id', loadChildren: './plan-info/plan-info.module#PlanInfoPageModule' },
   { path: 'set-mood', loadChildren: './set-mood/set-mood.module#SetMoodPageModule' },
+  { path: 'set-reward', loadChildren: './set-reward/set-reward.module#SetRewardPageModule' },
 ];
 
 @NgModule({
