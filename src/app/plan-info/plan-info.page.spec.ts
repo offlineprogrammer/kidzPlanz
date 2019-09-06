@@ -1,10 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { PlanInfoPage } from './plan-info.page';
-import { KidsServiceMock } from '../mocks';
+import { KidsServiceMock, ModalControllerMock } from '../mocks';
 import { KidsService } from '../services/kids.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -16,8 +16,14 @@ describe('PlanInfoPage', () => {
   let de: DebugElement;
   let el: HTMLElement;
 
+  let modalSpy = jasmine.createSpyObj('Modal', ['present','onDidDismiss']);
+  let modalCtrlSpy = jasmine.createSpyObj('ModalController', ['create']);
+  modalCtrlSpy.create.and.callFake(function() {
+      return modalSpy;
+  });
 
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule, RouterTestingModule, IonicModule, FormsModule],
       declarations: [ PlanInfoPage ],
@@ -25,7 +31,8 @@ describe('PlanInfoPage', () => {
         provide: KidsService,
         useClass: KidsServiceMock
       },
-      { provide: ActivatedRoute, useValue: {snapshot: {params: {kid_id: '1', plan_id: '1'}}}}
+      { provide: ActivatedRoute, useValue: {snapshot: {params: {kid_id: '1', plan_id: '1'}}}},
+      {provide: ModalController, useClass: ModalControllerMock}
     ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
@@ -33,6 +40,7 @@ describe('PlanInfoPage', () => {
   }));
 
   beforeEach(() => {
+
     fixture = TestBed.createComponent(PlanInfoPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -111,5 +119,27 @@ describe('PlanInfoPage', () => {
     expect(component.setReward).toHaveBeenCalled();
   });
 }));
+
+ /*  it('setReward should open a Modal', async(() => {
+    const modalController: ModalControllerMock = TestBed.get(ModalController);
+   // console.log(modalController.component.prototype);
+    spyOn(modalController.component, 'present');
+    const button = fixture.debugElement.query(By.css('.rewardButton')).nativeElement;
+    component.presentModal();
+    tick();
+    //button.click();
+    fixture.whenStable().then(() => {
+    fixture.detectChanges();
+    expect(modalController.component.present).toHaveBeenCalled();
+  });
+})); */
+
+  it('setReward should open a Modal', () => {
+  const modalController: ModalControllerMock = TestBed.get(ModalController);
+  spyOn(modalController, 'create');
+  component.setReward();
+  expect(modalController.create).toHaveBeenCalled();
+});
+
 
 });

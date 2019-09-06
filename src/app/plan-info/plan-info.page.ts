@@ -45,7 +45,7 @@ export class PlanInfoPage implements OnInit {
     private kidsService: KidsService,
     private navCtrl: NavController,
     private alertController: AlertController,
-    private modalController: ModalController) {
+    public modalController: ModalController) {
     this.plan = {
       id: '',
       name: '',
